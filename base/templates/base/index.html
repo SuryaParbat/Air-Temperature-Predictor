@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Predictive Maintenance - Air Temperature Predictor</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	{% load static %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'base/css/nunito-font.css'%}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href= "{% static 'base/css/style.css'%}">
+</head>
+<body class="form-v9">
+	<div class="page-content">
+		<div class="form-v9-content" style="background-image: url({% static 'base/images/form-v9.jpg' %})">
+			<form class="form-detail" action="predictions" method="post">
+				{% csrf_token %}
+				<h2>Air Temperature Predictor</h2>
+				<div class="form-row-total">
+					<div class="form-row">
+						<!--<label><b>Enter Process Temperature [K] </b></label>-->
+                  		<input type="number" step="0.01" class="input-text" id="process" name="processtemp" placeholder="Enter Process Temperature [K]" required>
+                	</div>
+					<div class="form-row">
+						<!--<label><b>Enter Rotational Speed [rpm] </b></label>-->
+                  		<input type="number" step="0.01" class="input-text" id="rotational" name="rotationalspeed" placeholder="Enter Rotational Speed [rpm]" required>
+						</div>
+				</div>
+				<div class="form-row-total">
+					<div class="form-row">
+						<!--<label><b>Enter Torque [Nm] </b></label>-->
+                  		<input type="number" step="0.01" class="input-text" id="torque" name="torquenm" placeholder="Enter Torque [Nm]" required>
+                		</div>
+					<div class="form-row">
+						<!--<label><b>Enter Tool Wear [min] </b></label>-->
+                  		<input type="number" step="0.01" class="input-text" id="toolwear" name="toolwearmin" placeholder="Enter Tool Wear" required>
+                		</div>
+				</div>
+				<div class="form-row-total">
+					<div class="form-row">
+						<!--<label><b>Enter Tool Wear Failure (TWF) </b></label>-->
+                  		<input type="number" step="0.01" class="input-text" id="twf" name="toolwearf" placeholder="Enter Tool Wear Failure Yes=1 No=0" min="0" max="1" required>
+                	</div>
+					<div class="form-row">
+						<!--<label><b>Enter Heat Dissipation Failure (HDF) </b></label>-->
+                  		<input type="number" step="0.01" class="input-text" id="HDF" name="heatfail" placeholder="Enter Heat Dissipation Failure Yes=1 No=0" min="0" max="1" required>
+					</div>
+				</div>
+				<div class="form-row-total">
+					<div class="form-row">
+						<!--<label><b>Enter Power Failure (PWF)</b></label>-->
+                  		<input type="number" step="0.01" class="input-text" id="PWF" name="powerfail" placeholder="Enter Power Failure Yes=1 No=0" min="0" max="1" required>
+                	</div>
+					<div class="form-row">
+						<!--<label><b>Enter Verstrain Failure (OSF)</b></label>-->
+                  		<input type="number" step="0.01" class="input-text" id="OSF" name="Verstrainfailure" placeholder="Enter Verstrain Failure Yes=1 No=0" min="0" max="1" required>
+                	</div>
+				</div>
+				<div class="form-row-total">
+					<div class="form-row">
+						<!--<label><b>Enter Random Failures (RNF)</b></label>-->
+                  		<input type="number" step="0.01" class="input-text" id="RNF" name="randomFail" placeholder="Enter Random Failures Yes=1 No=0" min="0" max="1" required>
+                		</div>
+				</div>
+				<div class="form-row-last">
+					<input type="submit" name="predict" class="register" value="Predict">
+					<input id="btntest" type="button" class="register" value="View EDA Profiling" onclick="window.open('profile', '_blank');" >
+
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
